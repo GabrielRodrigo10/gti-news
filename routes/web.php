@@ -49,12 +49,21 @@ Route::post('/logar',
 )->name('logar');
 
 Route::get('/logout', 
+<<<<<<< HEAD
     function (Request $request){
+=======
+    function(Request $request){
+>>>>>>> 3893d1e416051018929d6a2ee84359f37fe6712a
         Auth::logout();
         $request->session()->regenerate();
         return redirect()->route('home');
     }
 )->name('logout');
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3893d1e416051018929d6a2ee84359f37fe6712a
 
 
 
