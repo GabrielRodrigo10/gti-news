@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/', function () {
     return view('home');
@@ -48,22 +53,14 @@ Route::post('/logar',
     }
 )->name('logar');
 
-Route::get('/logout', 
-<<<<<<< HEAD
-    function (Request $request){
-=======
+Route::get('/logout',
+
     function(Request $request){
->>>>>>> 3893d1e416051018929d6a2ee84359f37fe6712a
         Auth::logout();
         $request->session()->regenerate();
         return redirect()->route('home');
     }
 )->name('logout');
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 3893d1e416051018929d6a2ee84359f37fe6712a
 
 
 

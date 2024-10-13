@@ -4,15 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>{{$title ?? "GTI News - Tudo sobre o GTI vc encontra aqui"}}</title>
-=======
     @vite(['resources/css/app.css',
     'resources/js/app.js'])
     <title>{{$title ?? "GTI News - 
         Tudo sobre o GTI vc encontra aqui"}}</title>
->>>>>>> 3893d1e416051018929d6a2ee84359f37fe6712a
 </head>
 
 <body>
@@ -63,36 +58,13 @@
                             <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contato</a>
                         </li>
                         @auth
-<<<<<<< HEAD
-                            @if(Auth::user()->cargo == 1)
-                                <li class="relative" x-data="{menu:false}">
-                                    <a class="cursor-pointer" x-on:click="menu = !menu" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Gestão</a>
-
-                                    <div x-show="menu" id="userDropdown1" class="absolute z-10 w-56 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow dark:divide-gray-600 dark:bg-gray-700">
-                                        <ul class="p-2 text-start text-sm font-medium text-gray-900 dark:text-white">
-                                            <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Gerenciar notícias </a></li>
-                                            <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Gerenciar usuários </a></li>
-                                            <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Financeiro </a></li>
-                                            <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Estatísticas </a></li>
-                                        </ul>
-            
-                                        <div class="p-2 text-sm font-medium text-gray-900 dark:text-white">
-                                            <a href="{{route('logout')}}" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Sair </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                
-
-
-                            @endif
-=======
                         @if(Auth::user()->cargo == 1)
                         <li class="relative" x-data="{menu:false}">
                             <a x-on:click="menu = !menu" class="cursor-pointer block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-blue-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Gestão</a>
                             <div x-show="menu" id="userDropdown1" class="absolute z-10 w-56 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow dark:divide-gray-600 dark:bg-gray-700">
                                 <ul class="p-2 text-start text-sm font-medium text-gray-900 dark:text-white">
                                     <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Gerenciar Notícias </a></li>
-                                    <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Gerenciar Usuários </a></li>
+                                    <li><a href="{{route('users.create')}}" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Gerenciar Usuários </a></li>
                                     <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Financeiro </a></li>
                                     <li><a href="#" title="" class="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"> Estatísticas </a></li>
                                 </ul>
@@ -105,7 +77,6 @@
 
 
                         @endif
->>>>>>> 3893d1e416051018929d6a2ee84359f37fe6712a
                         @endauth
                     </ul>
                 </div>
