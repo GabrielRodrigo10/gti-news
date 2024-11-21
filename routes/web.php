@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::post('/users', [UserController::class, 'store'])->name('users.store')->middleware('auth');;
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->middleware('auth');;
+Route::get('/users', [UserController::class, 'index'])->name('users.index')->middleware('auth');;
 
 Route::get('/', function () {
-    return view('home');
+    
+    $noticias = Noticia::paginate(6);
+    return view('home', compact('noticias'));
+
 })->name('home');
 
 Route::view('/teste', 'tela-teste');
@@ -21,6 +24,8 @@ Route::view('/teste', 'tela-teste');
 Route::view('/cadastro', 'tela-cadastro')->name('telaCadastro');
 
 Route::view('/login', 'login')->name('login');
+
+Route::view('/sobre-curso', 'sobre-curso')->name('sobreCurso'); 
 
 Route::post('/salva-usuario', 
     function (Request $request){
@@ -65,19 +70,19 @@ Route::get('/logout',
 
 Route::get('/gerencia-noticias', function () {
 
-    $noticias = Noticia::orderBy('id', 'desc')->get();
+    $noticias = Noticia::paginate(6);
     return view('gerencia-noticias', compact('noticias'));
 
 }
 
-)->name('gerenciaNoticias');
+)->name('gerenciaNoticias')->middleware('auth');
 
 Route::get('/cadastra-noticia',
 function(){
     $noticia = new Noticia();
     return view('cadastra-noticia', compact('noticia'));
 }
-)->name('cadastraNoticia');
+)->name('cadastraNoticia')->middleware('auth');
 route::post( '/salva-noticia', 
     function(Request $request){
         dd($request);
@@ -89,7 +94,7 @@ route::post( '/salva-noticia',
         return redirect()->route('home');
     }
 )
-->name('SalvaNoticia');
+->name('SalvaNoticia')->middleware('auth');
 route::post( '/salva-noticia', 
     function(Request $request){
         $noticia = new Noticia();
@@ -104,7 +109,7 @@ route::post( '/salva-noticia',
         return redirect()->route('gerenciaNoticias');
     }
 )
-->name('SalvaNoticia');
+->name('SalvaNoticia')->middleware('auth');
 route::get('/exibir-noticia/{noticia}',
      function(Noticia $noticia){
             return view('exibir-noticia', compact('noticia'));
@@ -129,14 +134,14 @@ route::get('/exibir-noticia/{noticia}',
         return redirect()->route('gerenciaNoticias');
     }
 )
-->name('alteraNoticia');
+->name('alteraNoticia')->middleware('auth');
     
 route::get('/deleta-noticia/{noticia}',
      function(Noticia $noticia){
         $noticia->delete();
             return redirect()->route('gerenciaNoticias');
      }
-     )->name('deletaNoticia');
+     )->name('deletaNoticia')->middleware('auth');
 
 
 

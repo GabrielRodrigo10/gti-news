@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Usuários</h1>
+<x-base>
+<h1 class="text-center font-bold pb-6 text-5xl">Usuários</h1>
 
-    <a href="{{route('users.create')}}">Novo</a>
+    <a class="font-bold text-decoration-line: underline" href="{{route('users.create')}}">Novo</a>
 
     <table>
         <thead>
@@ -32,7 +25,6 @@
             @endforelse
         </tbody>
     </table>
-
     {{$users->links()}}
-</body>
-</html>
+
+</x-base>
