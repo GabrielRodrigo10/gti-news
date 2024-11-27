@@ -143,7 +143,12 @@ route::get('/deleta-noticia/{noticia}',
      }
      )->name('deletaNoticia')->middleware('auth');
 
-
+     route::get('/deleta-usuario/{user}',
+     function(User $user){
+        $user->delete();
+            return redirect()->route('users.index');
+     }
+     )->name('deletaUsuario')->middleware('auth');
 
 
 
